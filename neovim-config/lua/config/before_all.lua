@@ -26,4 +26,6 @@ vim.api.nvim_create_user_command('W', 'w', {})
 vim.keymap.set('', '<space>e', function() vim.diagnostic.open_float(0, { scope = 'line' }) end)
 
 vim.g.netrw_winsize = 20
+
+vim.opt.mouse = ''
 -- END
