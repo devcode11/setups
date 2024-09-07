@@ -11,7 +11,6 @@ vim.g.maplocalleader = "\\"
 -- Basic options
 vim.opt.number = true
 vim.opt.ignorecase = true
-vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.smarttab = true
 vim.opt.expandtab = true
