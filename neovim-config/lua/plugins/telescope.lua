@@ -11,9 +11,13 @@ return {
 		table.insert(vimgrep_arguments, '!**/.git/*')
 
 		require('telescope').setup({
-			defaults = {
-				vimgrep_arguments = vimgrep_arguments
-			},
+			defaults = vim.tbl_extend(
+                            'force',
+                            require('telescope.themes').get_ivy(),
+                            {
+                                    vimgrep_arguments = vimgrep_arguments,
+                            }
+                        ),
 			pickers = {
 				find_files = {
 					find_command = { 'rg', '--files', '--hidden', '--glob', '!**/.git/*' },
