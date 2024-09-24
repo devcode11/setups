@@ -13,8 +13,8 @@ vim.opt.number = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.smarttab = true
-vim.opt.expandtab = true
-vim.opt.shiftwidth = 4
+-- vim.opt.expandtab = true
+-- vim.opt.shiftwidth = 4
 vim.opt.hlsearch = false
 -- vim.opt.visualbell = false
 
