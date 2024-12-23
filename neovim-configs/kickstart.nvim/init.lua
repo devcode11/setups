@@ -147,7 +147,7 @@ vim.opt.splitbelow = true
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
-vim.opt.list = true
+vim.opt.list = false
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
@@ -158,6 +158,10 @@ vim.opt.cursorline = false
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
+
+-- Disable fold message prefix on folds
+vim.opt.foldtext = ''
+vim.opt.foldnestmax = 1
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -211,7 +215,7 @@ end, { desc = 'Show warnings or [E]rror diagnostics' })
 -- })
 
 -- Netrw settings
--- vim.g.netrw_winsize = 20
+vim.g.netrw_winsize = 20
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
@@ -395,7 +399,9 @@ require('lazy').setup({
         --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
         --   },
         -- },
-        defaults = vim.tbl_extend('force', require('telescope.themes').get_ivy(), {}),
+        defaults = vim.tbl_extend('force', require('telescope.themes').get_ivy(), {
+          initial_mode = 'normal',
+        }),
         -- pickers = {}
         extensions = {
           ['ui-select'] = {
@@ -926,6 +932,9 @@ require('lazy').setup({
     --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   },
+  -- {
+  --   'nvim-treesitter/nvim-treesitter-context',
+  -- },
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
@@ -979,6 +988,17 @@ vim.cmd [[match TrailingWhitespaces /\s\+$/]]
 vim.api.nvim_set_hl(0, 'TrailingWhitespaces', { bg = 'Red' })
 vim.api.nvim_create_user_command('Trims', [[%s/\s\+$//e]], {})
 vim.api.nvim_create_user_command('W', 'w', {})
+
+vim.api.nvim_create_autocmd({ 'FileType' }, {
+  callback = function()
+    if require('nvim-treesitter.parsers').has_parser() then
+      vim.opt.foldmethod = 'expr'
+      vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+    else
+      vim.opt.foldmethod = 'syntax'
+    end
+  end,
+})
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
