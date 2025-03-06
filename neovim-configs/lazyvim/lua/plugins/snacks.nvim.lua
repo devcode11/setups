@@ -1,6 +1,16 @@
 return {
   "folke/snacks.nvim",
-  opts = function(_, opts)
-    opts.dashboard.enabled = false
-  end,
+  opts = {
+    dashboard = { enabled = false },
+    picker = {
+      layout = {
+        preset = "ivy_split",
+      },
+      formatters = {
+        file = {
+          truncate = 1000,
+        },
+      },
+    },
+  },
 }
