@@ -11,6 +11,15 @@ return {
           truncate = 1000,
         },
       },
+      sources = {
+        explorer = {
+          layout = {
+            layout = {
+              position = "right",
+            },
+          },
+        },
+      },
     },
   },
 }
