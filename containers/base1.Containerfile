@@ -16,6 +16,7 @@ xxd \
 unzip \
 zip \
 dos2unix \
+bat \
 fd-find \
 ripgrep \
 fzf \
