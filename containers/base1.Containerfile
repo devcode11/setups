@@ -3,7 +3,7 @@ FROM fedora:latest
 # Install man pages
 RUN sed -i '/tsflags/ s/nodocs//' /etc/dnf/dnf.conf
 
-RUN dnf install \
+RUN dnf install -y \
 man-db \
 diffutils \
 ncurses \
@@ -23,7 +23,7 @@ file \
 git \
 jq
 
-# RUN dnf install \
+# RUN dnf install -y \
 # util-linux \
 # psmisc \
 # strace \
