@@ -1,7 +1,7 @@
 FROM fedora:latest
 
 # Install man pages
-RUN sed '/tsflags/ s/nodocs//' /etc/dnf/dnf.conf
+RUN sed -i '/tsflags/ s/nodocs//' /etc/dnf/dnf.conf
 
 RUN dnf install \
 man-db \
