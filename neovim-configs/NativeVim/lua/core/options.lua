@@ -56,3 +56,7 @@ vim.g.maplocalleader = vim.keycode("<cr>")
 
 -- remove netrw banner for cleaner looking
 vim.g.netrw_banner = 0
+
+-- Other custom options
+
+vim.o.mouse = ''
