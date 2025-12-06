@@ -58,5 +58,10 @@ vim.g.maplocalleader = vim.keycode("<cr>")
 vim.g.netrw_banner = 0
 
 -- Other custom options
-
 vim.o.mouse = ''
+
+-- Disable providers
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_node_provider = 0
